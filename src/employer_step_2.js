@@ -8,8 +8,24 @@ var colorRed = "#df4b26";
 var colorGreen = "#659b41";
 var curColor = colorRed;
 var clickColor = new Array();
-var image;
-  
+var ref;
+var database;
+var storage;  
+var storageRef;
+$.getScript('https://www.gstatic.com/firebasejs/3.2.1/firebase.js', function (){
+
+var config = {
+    apiKey: "AIzaSyBhA0eDrGIGtHUkuK3-HD6wKQRm3cCYCa8",
+	  authDomain: "employmepls-a631c.firebaseapp.com",
+	  databaseURL: "https://employmepls-a631c.firebaseio.com",
+	  projectId: "employmepls-a631c",
+	  storageBucket: "employmepls-a631c.appspot.com",
+	  messagingSenderId: "682947596416"
+  };
+  firebase.initializeApp(config);
+  database = firebase.database();
+  storage = firebase.storage();
+})
 
 function prepareCanvas()
 {
@@ -31,9 +47,12 @@ resume.onload = function(){
 }
 $('#rj').mousedown(function(e){
 var canvas = document.getElementById('canvas');
-	image = canvas.toDataURL();	
-	var storageRef = firebase.storage().ref('feedback/feedback.png');
-  	storageRef.putString(image, 'data_url');
+	var image = new Image();
+	image.crossOrigin = "Anonymous";
+	image.onload = function(){
+		storageRef = storage.ref.child('feedback.png');
+  		storageRef.setItem( "savedImageData", canvas.toDataURL() );
+  	}
 });
 
 $('#gn').mousedown(function(e){
@@ -58,6 +77,12 @@ clickX.length=0;
 clickY.length=0;
 clickDrag.length=0;
 clickColor.length=0;
+});
+$('#interview').mousedown(function(e){
+	ref = database.ref("feedback").push();
+	ref.child('additional').set("Interview Invitation");
+	ref.child('comment').set("Congratulation!");
+	ref.child('companyName').set("whatever company");
 });
 $('#canvas').mousedown(function(e){
   var mouseX = e.pageX - this.offsetLeft;
