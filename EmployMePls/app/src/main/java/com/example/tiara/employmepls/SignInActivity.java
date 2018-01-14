@@ -61,7 +61,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = ((TextView)findViewById(R.id.email_ca)).getText().toString();
                 String password = ((TextView)findViewById(R.id.password_ca)).getText().toString();
-                Log.d("Main", "attepting create user " + email + " " + password);
+                Log.d("Main", "attempting create user " + email + " " + password);
                 auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -81,6 +81,10 @@ public class SignInActivity extends AppCompatActivity {
                 String email = ((TextView)findViewById(R.id.email)).getText().toString();
                 String password = ((TextView)findViewById(R.id.password)).getText().toString();
                 Log.d("Main", "attempting sign in");
+                if (email.length() == 0 || password.length() == 0){
+                    Toast.makeText(SignInActivity.this, "Please enter email and password.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

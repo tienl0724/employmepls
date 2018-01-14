@@ -21,7 +21,8 @@
         android:layout_height="wrap_content"
         android:text="Company"
         android:textAllCaps="true"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"/>
     <TextView
         android:id="@+id/job_company"
         android:layout_width="wrap_content"
@@ -33,7 +34,8 @@
         android:layout_height="wrap_content"
         android:text="Location"
         android:textAllCaps="true"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"/>
     <TextView
         android:id="@+id/job_location"
         android:layout_width="wrap_content"

@@ -33,15 +33,17 @@ public class AccountActivity extends AppCompatActivity {
             return;
         }
 
-        ((TextView)findViewById(R.id.name)).setText(user.getDisplayName());
+        if (user.getDisplayName() != null && user.getDisplayName().length() > 0) {
+            ((TextView) findViewById(R.id.name)).setText(user.getDisplayName());
+        }
         ((TextView)findViewById(R.id.email)).setText(user.getEmail());
-        ((TextView)findViewById(R.id.resume_uploaded)).setText("");
+        //((TextView)findViewById(R.id.resume_uploaded)).setText("");
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("applications");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                dataSnapshot.getValue();
+                //Map data = (Map<String, M>)dataSnapshot.getValue();
 
             }
 

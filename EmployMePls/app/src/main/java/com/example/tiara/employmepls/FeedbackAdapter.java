@@ -34,14 +34,29 @@ public class FeedbackAdapter extends ArrayAdapter<Feedback> {
             return view;
         }
 
-        ((TextView)view.findViewById(R.id.feedback)).setText(feedback.getFeedback());
+        TextView feedbackText = ((TextView)view.findViewById(R.id.feedback));
+        String feedbackString = feedback.getFeedback();
+        if (feedbackString != null && feedbackString.trim().length() > 0){
+            feedbackText.setVisibility(View.VISIBLE);
+            feedbackText.setText(feedbackString.trim());
+        } else {
+            feedbackText.setVisibility(View.GONE);
+        }
+
         String feedbackComment = "";
-        if (feedback.getComment() == null || feedback.getComment().length() == 0){
+        if (feedback.getComment() == null || feedback.getComment().trim().length() == 0){
             feedbackComment = "";
         } else {
-            feedbackComment = '"' + feedback.getComment() + '"';
+            feedbackComment = '"' + feedback.getComment().trim() + '"';
         }
-        ((TextView)view.findViewById(R.id.comments)).setText(feedbackComment);
+        TextView commentsText = ((TextView)view.findViewById(R.id.comments));
+        if (feedbackComment.length() > 0){
+            commentsText.setVisibility(View.VISIBLE);
+            commentsText.setText(feedbackComment);
+        } else {
+            commentsText.setVisibility(View.GONE);
+        }
+
         ((TextView)view.findViewById(R.id.job_name)).setText(feedback.getCompanyName());
 
         return view;

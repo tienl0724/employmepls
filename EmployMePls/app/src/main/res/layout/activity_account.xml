@@ -44,6 +44,7 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="John Doe"
             android:textSize="20sp"/>
 
         <TextView
@@ -53,7 +54,7 @@
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="15dp"/>
 
         <TextView
             android:id="@+id/email"
@@ -68,12 +69,13 @@
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="15dp"/>
 
         <TextView
             android:id="@+id/resume_uploaded"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Yes"
             android:textSize="20sp"/>
 
         <TextView
@@ -83,7 +85,7 @@
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="15dp"/>
 
         <TextView
             android:id="@+id/jobs_applied_to"
