@@ -53,6 +53,16 @@ var canvas = document.getElementById('canvas');
 		storageRef = storage.ref.child('feedback.png');
   		storageRef.setItem( "savedImageData", canvas.toDataURL() );
   	}
+  	context.clearRect(0, 0, canvasWidth, canvasHeight);
+var resume = new Image();
+resume.src = 'resume2.jpg';
+resume.onload = function(){
+    context.drawImage(resume,0,0,475,550);   
+}
+clickX.length=0;
+clickY.length=0;
+clickDrag.length=0;
+clickColor.length=0;
 });
 
 $('#gn').mousedown(function(e){
