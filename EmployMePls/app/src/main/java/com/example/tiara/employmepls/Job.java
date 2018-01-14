@@ -5,6 +5,7 @@ package com.example.tiara.employmepls;
  */
 
 public class Job {
+    private String id;
     private String title;
     private String description;
     private String requirements;
@@ -77,4 +78,13 @@ public class Job {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }
+

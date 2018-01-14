@@ -24,7 +24,8 @@
         <div class="control">
         Pen Color:<br>
         <button type="button" class="btn btn-success clr" id="gn">Green</button><br>
-        <button type="button" class="btn btn-danger clr" id="rd">Red</button>
+        <button type="button" class="btn btn-danger clr" id="rd">Red</button><br>
+        <button type="button" class="btn btn-primary clr" id="clear">Clear</button><br>
         </div>
         </div>
         <div class="col-3">
@@ -38,7 +39,19 @@
             </form>
           </div>
           <div class="row reject">
-            <button type="button" class="btn btn-danger kp-rj">Reject</button>
+            <button type="button" class="btn btn-danger kp-rj" id="rj"">Reject</button>
+            <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+<script>
+  var config = {
+	  apiKey: "AIzaSyBhA0eDrGIGtHUkuK3-HD6wKQRm3cCYCa8",
+	  authDomain: "employmepls-a631c.firebaseapp.com",
+	  databaseURL: "https://employmepls-a631c.firebaseio.com",
+	  projectId: "employmepls-a631c",
+	  storageBucket: "gs://employmepls-a631c.appspot.com",
+	  messagingSenderId: "682947596416"
+	};
+  firebase.initializeApp(config);
+</script>
           </div>
           </div>
         </div>

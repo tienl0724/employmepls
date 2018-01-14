@@ -1,10 +1,10 @@
+
 .textbox{
   margin: 10px;
   height: 650px;
   width: 100%;
 }
-.btn{
-  margin: 10px;
+.kp-rj{
   margin-top: 50px;
   width: 100%;
 }
@@ -14,6 +14,36 @@
 }
 .comment{
   width: 100%;
-  padding: 10px;
   height: 200px;
 }
+img{
+  width: 100%;
+}
+.scroll{
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+}
+.control{
+  width: 100%
+  margin: 10px;
+  margin-top: 50px;
+  position: fixed;
+}
+canvas{
+  width: 100%;
+}
+.clr{
+  margin-top: 20px;
+  width: 80px;
+}
+.col-3{
+  margin: 10px;
+}
+h4{
+margin: 15px;
+}
+.skip{
+  margin-top: 80px;
+  float: right;
+  }

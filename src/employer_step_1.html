@@ -5,35 +5,29 @@
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title></title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="employer_style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+    <script type="text/javascript" src="employer_step_1.js"></script>
 </head>
 
 <body>
   <div id="root">
     <div class="container-fluid">
       <div class="row">
-        <div class="col">
-          <form>
-            <textarea disabled class="textbox" name="resume">
-Cover Letter
-            </textarea>
-          </form>
+        <div class="col scroll">
+          <img src="coverletter.jpg" alt="Cover Letter"/>
+          <img src="resume.jpg" alt="Resume"/>
         </div>
-        <div class="col">
-          <form>
-            <textarea disabled class="textbox" name="resume">Resume</textarea>
-          </form>
-        </div>
-        <div class="col">
+        <div class="col-3 control">
           <div class="row">
-            <button type="button" class="btn btn-success">Keep</button>
+            <button type="button" class="btn btn-success kp-rj">Keep</button>
           </div>
           <div class="row reason">
             <form>
-              <input type="checkbox" value="effort">No effort on resume<br>
-              <input type="checkbox" value="req">Basic requirement not met<br>
-              <input type="checkbox" value="exp">Not enough industry experience<br>
+              <input type="checkbox" id="effort">No effort on resume<br>
+              <input type="checkbox" id="req">Basic requirement not met<br>
+              <input type="checkbox" id="exp">Not enough industry experience<br>
             </form>
           </div>
           <div class="row">
@@ -42,8 +36,13 @@ Cover Letter
             </form>
           </div>
           <div class="row reject">
-            <button type="button" class="btn btn-danger">Reject</button>
+            <button type="button" class="btn btn-danger kp-rj" id="rj1">Reject</button>
           </div>
+          <div class="row skip">
+        	<form action="employer_step_2.html">
+   			 <input type="submit" value="Step 2" />
+			</form>
+        	</div>
         </div>
       </div>
     </div>

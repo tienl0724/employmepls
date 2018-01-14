@@ -33,36 +33,31 @@ public class HomeActivity extends AppCompatActivity {
             String name = user.getDisplayName() == null ? user.getEmail() : user.getDisplayName();
             ((TextView) findViewById(R.id.user_name)).setText(name);
         }
+    }
 
-        findViewById(R.id.browse_jobs_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, JobsActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+    public void browseJobs(View view){
+        Intent intent = new Intent(this, JobsActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
-        findViewById(R.id.my_account_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, AccountActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+    public void myAccount(View view){
+        Intent intent = new Intent(this, AccountActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
-        findViewById(R.id.sign_out_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Toast.makeText(HomeActivity.this, "Signed out", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(HomeActivity.this, SignInActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+    public void signOut(View view){
+        FirebaseAuth.getInstance().signOut();
+        Toast.makeText(HomeActivity.this, "Signed out", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, SignInActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
-
+    public void viewFeedback(View view){
+        Intent intent = new Intent(this, FeedbackActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

@@ -1,14 +1,19 @@
 package com.example.tiara.employmepls;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,6 +48,47 @@ public class JobsActivity extends AppCompatActivity {
         ListView jobsListView = (ListView)findViewById(R.id.jobs_listview);
         final ArrayAdapter jobsAdapter = new JobsAdapter(this, R.layout.job_row, jobs);
         jobsListView.setAdapter(jobsAdapter);
+
+        jobsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("Jobs", "onItemClick " + i);
+                final Dialog dialog = new Dialog(JobsActivity.this);
+                dialog.setContentView(R.layout.job_application_dialog);
+                final Job job = (Job)jobsAdapter.getItem(i);
+
+                ((TextView)dialog.findViewById(R.id.job_title)).setText(job.getTitle());
+                ((TextView)dialog.findViewById(R.id.job_company)).setText(job.getCompany());
+                ((TextView)dialog.findViewById(R.id.job_location)).setText(job.getLocation());
+
+                dialog.findViewById(R.id.cancel_btn).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.findViewById(R.id.apply_btn).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+
+                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                        JobApplication jobApplication = new JobApplication();
+                        jobApplication.setJobID(job.getId());
+                        jobApplication.setUserID(currentUser.getUid());
+                        jobApplication.setEmail(currentUser.getEmail());
+                        jobApplication.setReviewed(false);
+                        jobApplication.setJobName(job.getTitle());
+                        database.child("applications").push().setValue(jobApplication);
+                        dialog.dismiss();
+                        Toast.makeText(JobsActivity.this, "Applied to job.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                dialog.show();
+            }
+        });
 
         // Connect to the Firebase database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -92,10 +138,12 @@ public class JobsActivity extends AppCompatActivity {
                     if (location != null) {
                         job.setLocation((String)location);
                     }
+                    Object id = ds.getKey();
+                    if (id != null) {
+                        job.setId((String)id);
+                    }
 
                     jobs.add(job);
-                   // jobsAdapter.clear();
-                    //jobsAdapter.addAll(jobs);
 
                 }
                 Log.d("Firebase Database", jobs.size() + " jobs");
@@ -111,7 +159,6 @@ public class JobsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
         finish();
