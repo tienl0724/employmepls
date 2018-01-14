@@ -29,11 +29,35 @@ resume.src = 'resume.jpg';
 resume.onload = function(){
     context.drawImage(resume,0,0);   
 }
+$('#rj').mousedown(function(e){
+var canvas = document.getElementById('canvas');
+	image = canvas.toDataURL();	
+	var storageRef = firebase.storage().ref('feedback/feedback.png');
+  	storageRef.putString(image, 'data_url');
+});
+
 $('#gn').mousedown(function(e){
 	curColor = colorGreen;
 });
 $('#rd').mousedown(function(e){
 	curColor = colorRed;
+});
+$('#clear').mousedown(function(e){
+	context.clearRect(0, 0, canvasWidth, canvasHeight);
+	var cv = new Image();
+cv.src = 'coverletter.jpg';
+cv.onload = function(){
+    context.drawImage(cv,0,1100);   
+}
+var resume = new Image();
+resume.src = 'resume.jpg';
+resume.onload = function(){
+    context.drawImage(resume,0,0);   
+}
+clickX.length=0;
+clickY.length=0;
+clickDrag.length=0;
+clickColor.length=0;
 });
 $('#canvas').mousedown(function(e){
   var mouseX = e.pageX - this.offsetLeft;
