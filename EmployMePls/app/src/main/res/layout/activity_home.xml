@@ -19,6 +19,7 @@
         android:background="@color/colorPrimary"
         android:textColor="@color/white"
         android:text="Browse Jobs"
+        android:onClick="browseJobs"
         android:layout_marginTop="50dp"/>
 
         <Button
@@ -28,6 +29,17 @@
             android:background="@color/colorPrimary"
             android:textColor="@color/white"
             android:text="My Account"
+            android:onClick="myAccount"
+            android:layout_marginTop="15dp"/>
+
+        <Button
+            android:id="@+id/view_feedback_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:text="View Feedback"
+            android:onClick="viewFeedback"
             android:layout_marginTop="15dp"/>
 
         <Button
@@ -37,6 +49,7 @@
             android:background="#E74C3C"
             android:textColor="@color/white"
             android:text="Sign Out"
+            android:onClick="signOut"
             android:layout_marginTop="15dp"/>
 
     </LinearLayout>
