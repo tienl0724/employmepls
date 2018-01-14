@@ -9,14 +9,8 @@ var colorGreen = "#659b41";
 var curColor = colorRed;
 var clickColor = new Array();
 var image;
+  
 
-document.getElementById("gn").addEventListener("click", function(){
-    clickColor.push(colorGreen);
-});
-document.getElementById("rj").addEventListener("click", function(){
-	canvas = document.getElementById('canvas');
-    image = canvas.toDataURL();
-});
 function prepareCanvas()
 {
 context = document.getElementById('canvas').getContext("2d");

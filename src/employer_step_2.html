@@ -38,7 +38,26 @@
             </form>
           </div>
           <div class="row reject">
-            <button type="button" class="btn btn-danger kp-rj" id="rj">Reject</button>
+            <button type="button" class="btn btn-danger kp-rj" id="rj"">Reject</button>
+            <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+<script>
+  var config = {
+	  apiKey: "AIzaSyBhA0eDrGIGtHUkuK3-HD6wKQRm3cCYCa8",
+	  authDomain: "employmepls-a631c.firebaseapp.com",
+	  databaseURL: "https://employmepls-a631c.firebaseio.com",
+	  projectId: "employmepls-a631c",
+	  storageBucket: "employmepls-a631c.appspot.com",
+	  messagingSenderId: "682947596416"
+	};
+  firebase.initializeApp(config);
+  var rj = document.getElementById('rj');
+  rj.addEventListener('change',function(e){
+  	var canvas = document.getElementById('canvas');
+	var image = canvas.toDataURL();
+	var storageRef = firebase.storage().ref('feedback/feedback.png');
+  	storageRef.putString(message, 'data_url');
+  };
+</script>
           </div>
           </div>
         </div>
