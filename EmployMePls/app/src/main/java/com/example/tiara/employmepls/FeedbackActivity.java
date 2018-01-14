@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -39,28 +40,36 @@ public class FeedbackActivity extends AppCompatActivity {
         ListView feedbackListView = (ListView)findViewById(R.id.all_feedback_listview);
         feedbackListView.setAdapter(feedbackAdapter);
 
+        findViewById(R.id.home_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
         // Connect to the Firebase database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         // Get a reference to the todoItems child items it the database
-        final DatabaseReference myRef = database.getReference("applications");
+        final DatabaseReference myRef = database.getReference("feedback");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 feedbackAdapter.clear();
-                List<Map<String, String>> data = (List<Map<String, String>>) dataSnapshot.getValue();
+                Map<String, Map<String, String>> data = (Map<String, Map<String, String>>) dataSnapshot.getValue();
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                 if (data == null || user == null){
                     return;
                 }
-                for (Map<String, String> applicationEntry : data){
-                    if (user.getUid().equals(applicationEntry.get("userID"))){
-                        Feedback feedback = new Feedback();
-                        feedback.setFeedback(applicationEntry.get("feedback"));
-                        feedback.setJobName(applicationEntry.get("jobName"));
-                        feedbackAdapter.add(feedback);
-                    }
+                for (Map<String, String> applicationEntry : data.values()){
+                    // if (user.getUid().equals(applicationEntry.get("userID"))){ //TODO web needs to send user id
+                    Feedback feedback = new Feedback();
+                    feedback.setFeedback(applicationEntry.get("additional"));
+                    feedback.setComment(applicationEntry.get("comment"));
+                    feedback.setCompanyName(applicationEntry.get("companyName"));
+                    feedbackAdapter.add(feedback);
+                    //  }
                 }
 
                 feedbackAdapter.notifyDataSetChanged();
@@ -105,7 +114,7 @@ public class FeedbackActivity extends AppCompatActivity {
                         if (user.getUid().equals(applicationEntry.get("userID"))){
                             Feedback feedback = new Feedback();
                             feedback.setFeedback(applicationEntry.get("feedback"));
-                            feedback.setJobName(applicationEntry.get("jobName"));
+                            feedback.setCompanyName(applicationEntry.get("jobName"));
                             feedbackAdapter.add(feedback);
                         }
                     }

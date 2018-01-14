@@ -6,15 +6,27 @@
 
     <include layout="@layout/header_bar"/>
 
-    <Button
+    <LinearLayout
         android:id="@+id/home_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home"
-        android:textColor="@color/white"
         android:background="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:padding="5dp"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"/>
+        android:layout_marginStart="@dimen/activity_horizontal_margin">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/left_caret"
+            android:tint="@color/white"/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/home_btn"
+            android:textSize="20sp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
 
     <ListView
         android:id="@+id/jobs_listview"
@@ -23,7 +35,7 @@
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:layout_marginTop="10dp"
-        android:background="#DADFE1"
+        android:background="@drawable/grey_border_background"
         android:padding="5dp"
         android:clickable="true"
         android:dividerHeight="2dp"/>

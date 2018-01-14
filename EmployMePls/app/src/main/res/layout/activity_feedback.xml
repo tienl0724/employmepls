@@ -6,6 +6,28 @@
     <include layout="@layout/header_bar"/>
 
     <LinearLayout
+        android:id="@+id/home_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/left_caret"
+            android:tint="@color/white"/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/home_btn"
+            android:textSize="20sp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -16,12 +38,14 @@
             android:layout_height="wrap_content"
             android:text="Greatest Areas of Improvement:"
             android:textSize="16sp"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary"
+            android:visibility="gone"/>
         
         <ListView
             android:id="@+id/improvement_areas_listview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,9 +58,7 @@
         <ListView
             android:id="@+id/all_feedback_listview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:listSelector="@color/colorAccent"/>
-
+            android:layout_height="wrap_content"/>
 
 
     </LinearLayout>

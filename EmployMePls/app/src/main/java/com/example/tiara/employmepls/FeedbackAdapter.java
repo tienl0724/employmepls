@@ -35,7 +35,14 @@ public class FeedbackAdapter extends ArrayAdapter<Feedback> {
         }
 
         ((TextView)view.findViewById(R.id.feedback)).setText(feedback.getFeedback());
-        ((TextView)view.findViewById(R.id.job_name)).setText(feedback.getJobName());
+        String feedbackComment = "";
+        if (feedback.getComment() == null || feedback.getComment().length() == 0){
+            feedbackComment = "";
+        } else {
+            feedbackComment = '"' + feedback.getComment() + '"';
+        }
+        ((TextView)view.findViewById(R.id.comments)).setText(feedbackComment);
+        ((TextView)view.findViewById(R.id.job_name)).setText(feedback.getCompanyName());
 
         return view;
     }

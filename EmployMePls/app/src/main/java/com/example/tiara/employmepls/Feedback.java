@@ -5,15 +5,16 @@ package com.example.tiara.employmepls;
  */
 
 public class Feedback {
-    private String jobName;
+    private String companyName;
     private String feedback;
+    private String comment;
 
-    public String getJobName() {
-        return jobName;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setJobName(String jobName) {
-        this.jobName = jobName;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     public String getFeedback() {
@@ -22,5 +23,13 @@ public class Feedback {
 
     public void setFeedback(String feedback) {
         this.feedback = feedback;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }
