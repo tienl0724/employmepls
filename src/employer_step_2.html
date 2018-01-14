@@ -24,7 +24,8 @@
         <div class="control">
         Pen Color:<br>
         <button type="button" class="btn btn-success clr" id="gn">Green</button><br>
-        <button type="button" class="btn btn-danger clr" id="rd">Red</button>
+        <button type="button" class="btn btn-danger clr" id="rd">Red</button><br>
+        <button type="button" class="btn btn-primary clr" id="clear">Clear</button><br>
         </div>
         </div>
         <div class="col-3">
@@ -46,17 +47,10 @@
 	  authDomain: "employmepls-a631c.firebaseapp.com",
 	  databaseURL: "https://employmepls-a631c.firebaseio.com",
 	  projectId: "employmepls-a631c",
-	  storageBucket: "employmepls-a631c.appspot.com",
+	  storageBucket: "gs://employmepls-a631c.appspot.com",
 	  messagingSenderId: "682947596416"
 	};
   firebase.initializeApp(config);
-  var rj = document.getElementById('rj');
-  rj.addEventListener('change',function(e){
-  	var canvas = document.getElementById('canvas');
-	var image = canvas.toDataURL();
-	var storageRef = firebase.storage().ref('feedback/feedback.png');
-  	storageRef.putString(message, 'data_url');
-  };
 </script>
           </div>
           </div>
