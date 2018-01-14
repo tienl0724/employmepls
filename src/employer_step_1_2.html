@@ -8,10 +8,10 @@
 	<link rel="stylesheet" href="employer_style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
-    <script type="text/javascript" src="employer_step_2.js"></script>
+    <script type="text/javascript" src="employer_step_1.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-database.js"></script>
 <script>
   var config = {
     apiKey: "AIzaSyBhA0eDrGIGtHUkuK3-HD6wKQRm3cCYCa8",
@@ -27,25 +27,21 @@
 
 <body>
   <div id="root">
-    <div class="container-fluid ctn">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col">
-        <canvas id="canvas" width="850" height="2200"><script type="text/javascript"> $(document).ready(function() {
-    	 prepareCanvas();
-});</script></canvas>
+        <div class="col scroll">
+          <img src="resume2.jpg" alt="Resume"/>
         </div>
-        <div class="col-1">
-        <div class="control">
-        Pen Color:<br>
-        <button type="button" class="btn btn-success clr" id="gn">Green</button><br>
-        <button type="button" class="btn btn-danger clr" id="rd">Red</button><br>
-        <button type="button" class="btn btn-primary clr" id="clear">Clear</button><br>
-        </div>
-        </div>
-        <div class="col-3">
-        <div class="control">
+        <div class="col-3 control">
           <div class="row">
-            <button type="button" class="btn btn-success kp-rj" id="interview">Send interview invitation</button>
+            <button type="button" class="btn btn-success kp-rj">Keep</button>
+          </div>
+          <div class="row reason">
+            <form>
+              <input type="checkbox" id="effort">No effort on resume<br>
+              <input type="checkbox" id="req">Basic requirement not met<br>
+              <input type="checkbox" id="exp">Not enough industry experience<br>
+            </form>
           </div>
           <div class="row">
             <form class="comment">
@@ -53,21 +49,16 @@
             </form>
           </div>
           <div class="row reject">
-            <button type="button" class="btn btn-danger kp-rj" id="rj"">Reject</button>
-            <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
-<script>
-  var config = {
-	  apiKey: "AIzaSyBhA0eDrGIGtHUkuK3-HD6wKQRm3cCYCa8",
-	  authDomain: "employmepls-a631c.firebaseapp.com",
-	  databaseURL: "https://employmepls-a631c.firebaseio.com",
-	  projectId: "employmepls-a631c",
-	  storageBucket: "gs://employmepls-a631c.appspot.com",
-	  messagingSenderId: "682947596416"
-	};
-  firebase.initializeApp(config);
-</script>
+          <script type="text/javascript"> $(document).ready(function() {
+    	 prepare();
+});</script>
+            <button type="button" class="btn btn-danger kp-rj" id="rj">Reject</button>
           </div>
-          </div>
+          <div class="row skip">
+        	<form action="employer_step_2.html">
+   			 <input type="submit" value="Step 2" />
+			</form>
+        	</div>
         </div>
       </div>
     </div>
